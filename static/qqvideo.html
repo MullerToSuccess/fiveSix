@@ -1,0 +1,71 @@
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Tcplayer视频播放器</title>
+  <script src="http://imgcache.qq.com/open/qcloud/video/vcplayer/TcPlayer-2.2.1.js" charset="utf-8"></script>
+  <script>
+    window.onpopstate = function (event) {
+      console.log(2222);
+      let tcplayerclosediv = window.parent.document.querySelector('span.tcplayerclosediv');
+      if (tcplayerclosediv) {
+        if (window.tcplayer) {
+          window.tcplayer.destroy();
+        }
+        tcplayerclosediv.click();
+        tcplayerclosediv.click();
+      }
+    }
+    history.pushState({
+      page: 1
+    }, null, location);
+    window.onload = function () {
+      let param = location.search.replace("?param=", "");
+      param = decodeURIComponent(param);
+      //"m3u8_hd": "http://200000621.vod.myqcloud.com/200000621_3cff9e5c9fce11e5b4732d11c2cae25d.f230.av.m3u8?sign=60a116a3d7c8331c11f9a71fb1adb1ce&t=5abf6bcf",
+      //"m3u8_sd": "http://200000621.vod.myqcloud.com/200000621_3cff9e5c9fce11e5b4732d11c2cae25d.f220.av.m3u8?sign=064ffcacf1eac5654ac538728c3dc71d&t=5abf6bcf",
+      //param = "http://200000621.vod.myqcloud.com/200000621_3cff9e5c9fce11e5b4732d11c2cae25d.f230.av.m3u8?sign=60a116a3d7c8331c11f9a71fb1adb1ce&t=5abf6bcf";
+      window.tcplayer = new TcPlayer('tcplayerdiv', {
+        "m3u8": param,
+        "autoplay": true, //iOS下safari浏览器，以及大部分移动端浏览器是不开放视频自动播放这个能力的
+        "coverpic": "",
+        "width": '100%', //视频的显示宽度，请尽量使用视频分辨率宽度
+        "height": '100%' //视频的显示高度，请尽量使用视频分辨率高度
+      });
+
+      let tcplayerclosediv = document.getElementById('tcplayerclosediv');
+      tcplayerclosediv.addEventListener("click", function(){history.back();});
+    }
+
+  </script>
+  <style>
+    html,
+    body {
+      padding: 0px;
+      margin: 0px;
+    }
+    #tcplayerclosediv{
+      background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA25pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDY3IDc5LjE1Nzc0NywgMjAxNS8wMy8zMC0yMzo0MDo0MiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDplOTZkMGVjNy0xNDc2LTdhNDItYmI0NC03ZTdlMWIzNTlhNTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NjQ2OUJBMTAxMjk4MTFFN0FEMzQ4RjlDMTRCOTFENjYiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NjQ2OUJBMEYxMjk4MTFFN0FEMzQ4RjlDMTRCOTFENjYiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKFdpbmRvd3MpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6OTQwNkZBNTcwRjk5MTFFN0EwNEFCMjMxMTc3QzYwRUQiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6OTQwNkZBNTgwRjk5MTFFN0EwNEFCMjMxMTc3QzYwRUQiLz4gPC9yZGY6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') no-repeat scroll 0 0 transparent;
+      background-size: auto 100%;
+      color: #ffffff;
+      border-radius: 12px;
+      line-height: 6vh;
+      text-align: center;
+      height: 6vh;
+      width: 6vh;
+      font-size: 5vh;
+      padding: 1px;
+      top: 0px;
+      right: 0px;
+      z-index: 2;
+      position: absolute;
+    }
+  </style>
+</head>
+
+<body>
+  <span id="tcplayerclosediv"></span>
+  <div id="tcplayerdiv" style="width:100%;width:100%;"></div>
+</body>
+
+</html>

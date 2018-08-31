@@ -1,0 +1,36 @@
+
+export const SET_USERID = 'SET_USERID'
+
+export const SET_DETAILS = 'SET_DETAILS'
+
+export const SET_BASEINFO = 'SET_BASEINFO'
+
+export const SET_CLASSINFO = 'SET_CLASSINFO'
+
+export const SET_COURSEINFO = 'SET_COURSEINFO'
+
+export const SET_FAMILYTNFO = 'SET_FAMILYTNFO'
+
+export const SET_STUDYINFO = 'SET_STUDYINFO'
+
+export const SET_CLASSLISTS = 'SET_CLASSLISTS'
+
+export const SET_GRADE = 'SET_GRADE'
+
+export const SET_CLASSNAME = 'SET_CLASSNAME'
+
+export const SET_SCORE = 'SET_SCORE'
+
+export const SET_GUARDIAN = 'SET_GUARDIAN'
+
+export const SET_GUARDIANPHONE = 'SET_GUARDIANPHONE'
+
+export const SET_GUARDIANID = 'SET_GUARDIANID'
+
+export const SET_GRADENAME = 'SET_GRADENAME'
+
+export const SET_GRADECONFIG = 'SET_GRADECONFIG'
+
+export const SET_GUARDIANCONFIG = 'SET_GUARDIANCONFIG'
+
+export const SET_ISCACHE = 'SET_ISCACHE'

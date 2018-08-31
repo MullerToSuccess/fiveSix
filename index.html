@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0">
+  <title>56点APP-最新版</title>
+  <script>
+    window.platform = 'pc';
+    <%= htmlWebpackPlugin.options.version %>
+  </script>
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+
+<script src="<%= htmlWebpackPlugin.options.libUrl %>app_plug.js"></script>
+
+</head>
+<body ontouchstart caller="mobile">
+<div id="app">
+</div>
+<!-- built files will be auto injected 3333 -->
+</body>
+<script src="<%= htmlWebpackPlugin.options.qtiUrl %>qtivue.js"></script>
+<link rel="stylesheet" href="<%= htmlWebpackPlugin.options.qtiUrl%>qtivue.css" />
+<script src="<%= htmlWebpackPlugin.options.himUrl %>anoahim.js"></script>
+<script src="<%= htmlWebpackPlugin.options.qtiUrl %>mp3player.js"></script>
+<script src="<%= htmlWebpackPlugin.options.qtiUrl %>tcplayer.js"></script>
+<script>
+ window.onload = function () {
+      Vue.use(window.qtivue.default)
+      Vue.use(AnoahIM)
+      Vue.use(window.mp3player.default)
+      Vue.use(window.tcplayer.default)
+    }
+</script>
+</html>

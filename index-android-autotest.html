@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv=Content-Security-Policy content="default-src 'self' ws://* http://*  cdvfile://* 'unsafe-inline' 'unsafe-eval'; connect-src 'self' ws:  http://*  cdvfile://* 'unsafe-inline' 'unsafe-eval';font-src 'self' https: http: data: content: 'unsafe-inline' 'unsafe-eval';style-src 'self' http://* 'unsafe-inline' 'unsafe-eval'; media-src *; img-src 'self' http://* data: content:;">
+  <title>56点APP</title>
+  <script>
+    window.platform = 'android';
+    <%= htmlWebpackPlugin.options.version %>
+  </script>
+  <script src="<%= htmlWebpackPlugin.options.libUrl %>app_plug.js"></script>
+
+</head>
+
+<body ontouchstart caller="mobile">
+  <div id="app">
+  </div>
+  <!-- built files will be auto injected -->
+</body>
+
+<script type="text/javascript" src="<%= htmlWebpackPlugin.options.libUrl%>android/cordova-8.0.0.js"></script>
+<script src="<%= htmlWebpackPlugin.options.qtiUrl %>qtivue.js"></script>
+<link rel="stylesheet" href="<%= htmlWebpackPlugin.options.qtiUrl%>qtivue.css" />
+<script src="<%= htmlWebpackPlugin.options.himUrl %>anoahim.js"></script>
+<script src="<%= htmlWebpackPlugin.options.qtiUrl %>mp3player.js"></script>
+<script src="<%= htmlWebpackPlugin.options.qtiUrl %>tcplayer.js"></script>
+<script>
+
+    window.onload = function () {
+      let user = localStorage.getItem('user')
+      if (user) {
+        user = JSON.parse(user);
+        if (!user.isLogin) {
+          autoLogin();
+        }
+      } else {
+        autoLogin();
+      }
+
+
+      function autoLogin() {
+        window.bus.$store.commit('account/setUsername', 'zhanglaoda');
+        window.bus.$store.commit('account/setPassword', '111111');
+        window.bus.$store.dispatch('account/doLogin').then(r => {
+          window.location.href = "index-android-autotest.html";
+        })
+      }
+
+      Vue.use(window.qtivue.default)
+      Vue.use(AnoahIM)
+      Vue.use(window.mp3player.default)
+      Vue.use(window.tcplayer.default)
+    }
+</script>
+
+</html>
