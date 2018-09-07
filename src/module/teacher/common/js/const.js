@@ -25,7 +25,13 @@ export const Switches = [{
   name: '我的作业',
   imgUrl: require('@/assets/_images/teacher/teacher_home2.png'),
   path: '/homework'
-}]
+}
+// , {
+//   name: '学生考勤',
+//   imgUrl: require('@/assets/_images/teacher/teacher_home2.png'),
+//   path: '/teacher/student/attendanceCount'
+// }
+]
 export const StudentsMock = [
   {
     'Farea': '1',

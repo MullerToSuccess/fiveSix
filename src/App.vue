@@ -77,15 +77,19 @@ export default {
       }, false);
 
       window.appPlug.onBackKey = function () {
-        if (window.location.hash.match(/#\/(login.*)?$/)) {
+        // if (window.location.hash.match(/#\/(login.*)?$/)) {
+        // alert(JSON.stringify(window.location.hash));
+        if (window.location.hash === "#/teacher/home" || window.location.hash === "#/manager/home") {
+          // window.appPlug && window.appPlug.quit();
           self.back_key_times++;
           console.log(' self.back_key_times', self.back_key_times);
-          setTimeout(function () {
-            self.back_key_times--;
-          }, 600);
+          // setTimeout(function () {
+          //   self.back_key_times--;
+          // }, 600);
           if (self.back_key_times === 1) {
             Toast({ 'position': 'bottom', 'message': '再按一次退出应用!' });
-          } else {
+          } else if(self.back_key_times === 2){
+            // alert(self.back_key_times)
             window.appPlug && window.appPlug.quit();
           }
         } else {

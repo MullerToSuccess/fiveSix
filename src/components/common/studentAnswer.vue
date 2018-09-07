@@ -136,7 +136,6 @@ export default {
       }
     },
     paint(idx) {
-      debugger
       console.log(idx);
       this.$emit("emit-paint", { idx });
     }

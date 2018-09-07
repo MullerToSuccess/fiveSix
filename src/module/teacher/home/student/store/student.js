@@ -7,7 +7,7 @@ export default {
     studentHostingArray: [],
     classInfo: {},
     currentTrusteeship: {},
-    currentImage: {},
+    currentImage: [],
     feedbackId: ''
   },
   getters: {

@@ -27,6 +27,7 @@ import mqtt from '@/utils/LMQqtt.js'
 import echarts from 'echarts/lib/echarts'
 // 引入柱状图
 import 'echarts/lib/chart/pie'
+import 'echarts/lib/chart/line'
 import 'echarts/lib/component/tooltip'
 import 'echarts/lib/component/title'
 import '@/style/global.scss'

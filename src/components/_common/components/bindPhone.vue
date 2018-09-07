@@ -81,7 +81,7 @@ export default {
       user.sendSmsVerifycode({
         mobile: this.phone,
         fetchNum: this.type === 'forget' ? 2 : 1,
-        needBind: bool
+        needBind: this.$route.params.editPhone ? !bool : bool
       }).then(succ => {
         this.smsUseable = true
         Toast('验证码发送成功')

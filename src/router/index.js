@@ -159,6 +159,11 @@ let router = new Router({
 })
 
 router.beforeEach((to, from, next) => {
+  console.log('from:', from)
+  console.log('to:', to)
+  if ((from.name === 'tHome' && to.name === 'teacher') || (from.name === 'mHome' && to.name === 'manager')) {
+    return
+  }
   // 定义路由堆栈信息，便于转场动画
   const fade = ['manager', 'teacher', 'home', 'news', 'my', 'login']
   let toUrlArr = to.fullPath.split('/')

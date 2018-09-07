@@ -41,6 +41,7 @@ export default {
   activated () {
   },
   mounted () {
+    console.log(3333, this.$route);
     if (this.$route.name === 'mNews' || this.$route.name === 'tNews') {
     } else {
       if (this.newMsg) this.$refs.imgRef[1].src = require('@/assets/_images/public/notice.png')
